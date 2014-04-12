@@ -35,13 +35,13 @@ use Dist::Zilla::App -command;
 sub _colorize {
     my ($self, $string, $color) = @_;
     return $string if not defined $color;
-    return $string if $color eq $EMPTY;
+    return $string if $color eq q[];
     # $terminator is a purely cosmetic change to make the color end at the end
     # of the line rather than right before the next line. It is here because
     # if you use background colors, some console windows display a little
     # fragment of colored background before the next uncolored (or
     # differently-colored) line.
-    my $terminator = chomp $string ? "\n" : $EMPTY;
+    my $terminator = chomp $string ? "\n" : q[];
     return  Term::ANSIColor::colored( $string, $color ) . $terminator;
 }
 
