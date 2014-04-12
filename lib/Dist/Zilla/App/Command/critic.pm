@@ -47,10 +47,11 @@ sub _colorize {
 
 sub _colorize_by_severity {
     my ( $self, $critic, @violations ) = @_;
-    return @violations if $OSNAME =~ m/MSWin32/xms;
+    return @violations if $^O =~ m/MSWin32/xms;
     return @violations if not eval {
         require Term::ANSIColor;
-        Term::ANSIColor->VERSION( 2.02 );
+        require Perl::Critic::Utils::Constants;
+        Term::ANSIColor->VERSION( $Perl::Critic::Utils::Constants::_MODULE_VERSION_TERM_ANSICOLOR );
         1;
     };
  
