@@ -110,7 +110,6 @@ my $static_prereqs = do { my $x = {
                       'requires' => {
                                       'Data::Dump' => '0',
                                       'Dist::Zilla::App' => '0',
-                                      'Moose' => '0',
                                       'Path::Tiny' => '0',
                                       'perl' => '5.008',
                                       'strict' => '0',
