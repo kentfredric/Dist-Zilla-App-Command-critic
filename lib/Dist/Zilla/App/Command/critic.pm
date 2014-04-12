@@ -98,7 +98,7 @@ sub _critique_file {
       my @violations = $critic->critique("$file");
       $self->_report_file( $file, @violations );
   } Try::Tiny::catch {
-      $self->zilla->log_warn($_);
+      $self->zilla->log($_);
   };
 }
 
