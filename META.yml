@@ -34,6 +34,10 @@ requires:
   strict: '0'
   utf8: '0'
   warnings: '0'
+resources:
+  bugtracker: https://github.com/kentfredric/Dist-Zilla-App-Command-critic/issues
+  homepage: https://github.com/kentfredric/Dist-Zilla-App-Command-critic
+  repository: https://github.com/kentfredric/Dist-Zilla-App-Command-critic.git
 version: '0.001000'
 x_BuiltWith:
   modules:
