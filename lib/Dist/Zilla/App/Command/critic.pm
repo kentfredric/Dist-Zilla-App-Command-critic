@@ -42,6 +42,12 @@ use Dist::Zilla::App '-command';
 
 
 
+sub _print {
+    my ( $self, @message ) = @_;
+    print @message or $self->zilla->log_fatal('Cant write to STDOUT');
+    return;
+}
+
 sub _colorize {
     my ( undef, $string, $color ) = @_;
     return $string if not defined $color;
@@ -90,8 +96,15 @@ sub _colorize_by_severity {
 sub _report_file {
     my ( $self, $critic, undef, $rpath, @violations ) = @_;
 
-    printf "\n___[ %s : %d violations ]___\n\n", $rpath, scalar @violations;
+    if ( @violations > 0 ) {
+        $self->_print("\n");
+    }
+    $self->_print( sprintf "___[ %s : %d violations ]___\n",
+        $rpath, scalar @violations );
 
+    if ( @violations > 0 ) {
+        $self->_print("\n");
+    }
     my $verbosity = $critic->config->verbose;
     my $color     = $critic->config->color();
 
@@ -103,16 +116,14 @@ sub _report_file {
         Perl::Critic::Utils::verbosity_to_format($verbosity) );
 
     if ( not $color ) {
-        print @violations or $self->zilla->log_fatal(q[Error printing to STDOUT]);
-        return;
+        $self->_print(@violations) return;
     }
-    print $self->_colorize_by_severity( $critic, @violations )
-      or $self->zilla->log_fatal(q[Error printing to STDOUT]);
+    $self->_print( $self->_colorize_by_severity( $critic, @violations ) );
     return;
 }
 
 sub _critique_file {
-    my ( $self, $critic, $file , $rpath ) = @_;
+    my ( $self, $critic, $file, $rpath ) = @_;
     Try::Tiny::try {
         my @violations = $critic->critique("$file");
         $self->_report_file( $critic, $file, $rpath, @violations );
@@ -124,7 +135,7 @@ sub _critique_file {
 }
 
 sub execute {
-    my ( $self, undef,undef ) = @_;
+    my ( $self, undef, undef ) = @_;
 
     my ( $target, undef ) = $self->zilla->ensure_built_in_tmpdir;
 
@@ -153,8 +164,8 @@ sub execute {
       Perl::Critic::Utils::all_perl_files( $path->child('lib')->stringify );
 
     for my $file (@files) {
-       my $rpath = Path::Tiny::path($file)->relative($path);
-        $self->_critique_file( $critic, $file , $rpath );
+        my $rpath = Path::Tiny::path($file)->relative($path);
+        $self->_critique_file( $critic, $file, $rpath );
     }
     return 0;
 }
