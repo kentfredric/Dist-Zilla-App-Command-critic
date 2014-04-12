@@ -42,6 +42,15 @@ use Dist::Zilla::App '-command';
 
 
 
+
+
+
+
+
+
+
+
+
 sub _print {
   my ( $self, @message ) = @_;
   print @message or $self->zilla->log_fatal('Cant write to STDOUT');
@@ -179,12 +188,12 @@ version 0.001000
 
 =head1 DESCRIPTION
 
-I have a hard time understanding the output of C<[Test::PerlCritic]>, its rather hard to read
-and is needlessly coated in cruft due to having to run through the C<Test::> framework.
+I have a hard time understanding the output of C<[Test::Perl::Critic]>, its rather hard to read and is needlessly coated in cruft
+due to having to run through the C<Test::> framework.
 
 It also discards a few preferences from C<perlcritic.rc> such as those that emit color codes.
 
-Again, conflated by the desire to run through the test framework.
+Again, conflated by the need to run through the test framework.
 
 I also don't necessarily want to make the tests pass just to release.
 
@@ -196,13 +205,22 @@ I<TL;DR>
 
   ~ Happyness ~
 
+The result will be similar to doing:
+
+   dzil run --no-build perlcritic -p perlcritic.rc lib/
+
+Except that is useless to me because it doesn't output the filenames anywhere unless you have a verbosity level that incorporates
+a filename in I<EACH> violation, which for me, is undesriable clutter when you have 20 violations in a single file. ( And the most
+L<< verbose violation levels|perlcritic/verbose-N-FORMAT >>, that is, all except C<1,2,3,5,7> lack C<%f>.
+
 =head1 CONFIGURATION
 
 This module has little configuration at this point.
 
 C<perlcritic.rc> is the name of the default profile to use, and it must be in your I<BUILT> tree to be used.
 
-Alternatively, I<IF> you are using C<[Test::Perl::Critic]> in your dist, the path specified to C<perlcritic.rc> in that module will be used.
+Alternatively, I<IF> you are using C<[Test::Perl::Critic]> in your dist, the path specified to C<perlcritic.rc> in that module
+will be used.
 
 =head1 AUTHOR
 
