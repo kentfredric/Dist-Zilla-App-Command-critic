@@ -34,9 +34,9 @@ The result will be similar to doing:
 
    dzil run --no-build perlcritic -p perlcritic.rc lib/
 
-Except that is useless to me because it doesn't output the filenames anywhere unless you have a verbosity level that incorporates
-a filename in I<EACH> violation, which for me, is undesriable clutter when you have 20 violations in a single file. ( And the most
-L<< verbose violation levels|perlcritic/verbose-N-FORMAT >>, that is, all except C<1,2,3,5,7> lack C<%f>.
+Except that is useless to me because it doesn't output the file names anywhere unless you have a verbosity level that incorporates
+a file name in I<EACH> violation, which for me, is undesirable clutter when you have 20 violations in a single file. ( And the most
+L<< verbose violation levels|perlcritic/verbose-N-FORMAT >>, that is, all except C<1,2,3,5,7> lack C<%f> )
 
 =cut
 
