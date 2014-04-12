@@ -10,7 +10,7 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "build your dist and run perl critic on the built files.",
+  "ABSTRACT" => "build your dist and run Perl::Critic on the built files.",
   "AUTHOR" => "Kent Fredric <kentfredric\@gmail.com>",
   "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {

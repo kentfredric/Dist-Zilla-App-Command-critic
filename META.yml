@@ -1,5 +1,5 @@
 ---
-abstract: 'build your dist and run perl critic on the built files.'
+abstract: 'build your dist and run Perl::Critic on the built files.'
 author:
   - 'Kent Fredric <kentfredric@gmail.com>'
 build_requires:

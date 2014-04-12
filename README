@@ -1,5 +1,5 @@
 NAME
-    Dist::Zilla::App::Command::critic - build your dist and run perl critic
+    Dist::Zilla::App::Command::critic - build your dist and run Perl::Critic
     on the built files.
 
 VERSION
@@ -11,7 +11,7 @@ DESCRIPTION
     run through the "Test::" framework.
 
     It also discards a few preferences from "perlcritic.rc" such as those
-    that emit colour codes.
+    that emit color codes.
 
     Again, conflated by the desire to run through the test framework.
 
@@ -25,6 +25,15 @@ DESCRIPTION
       dzil critic 
 
       ~ Happyness ~
+
+CONFIGURATION
+    This module has little configuration at this point.
+
+    "perlcritic.rc" is the name of the default profile to use, and it must
+    be in your *BUILT* tree to be used.
+
+    Alternatively, *IF* you are using "[Test::Perl::Critic]" in your dist,
+    the path specified to "perlcritic.rc" in that module will be used.
 
 AUTHOR
     Kent Fredric <kentfredric@gmail.com>

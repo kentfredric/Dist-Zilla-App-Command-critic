@@ -5,11 +5,21 @@ use utf8;
 
 package Dist::Zilla::App::Command::critic;
 $Dist::Zilla::App::Command::critic::VERSION = '0.001000';
-# ABSTRACT: build your dist and run perl critic on the built files.
+# ABSTRACT: build your dist and run Perl::Critic on the built files.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
-use Dist::Zilla::App -command;
+use Dist::Zilla::App '-command';
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -153,7 +163,7 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::App::Command::critic - build your dist and run perl critic on the built files.
+Dist::Zilla::App::Command::critic - build your dist and run Perl::Critic on the built files.
 
 =head1 VERSION
 
@@ -164,7 +174,7 @@ version 0.001000
 I have a hard time understanding the output of C<[Test::PerlCritic]>, its rather hard to read
 and is needlessly coated in cruft due to having to run through the C<Test::> framework.
 
-It also discards a few preferences from C<perlcritic.rc> such as those that emit colour codes.
+It also discards a few preferences from C<perlcritic.rc> such as those that emit color codes.
 
 Again, conflated by the desire to run through the test framework.
 
@@ -177,6 +187,14 @@ I<TL;DR>
   dzil critic 
 
   ~ Happyness ~
+
+=head1 CONFIGURATION
+
+This module has little configuration at this point.
+
+C<perlcritic.rc> is the name of the default profile to use, and it must be in your I<BUILT> tree to be used.
+
+Alternatively, I<IF> you are using C<[Test::Perl::Critic]> in your dist, the path specified to C<perlcritic.rc> in that module will be used.
 
 =head1 AUTHOR
 
