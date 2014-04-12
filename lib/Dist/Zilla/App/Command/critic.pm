@@ -79,7 +79,7 @@ sub _colorize_by_severity {
 sub _report_file {
     my ( $self, $critic, $file, @violations ) = @_;
 
-    printf "%3d : %s\n", scalar @violations, $file;
+    printf "\n___[ %s : %n violations ]___\n\n", $file, scalar @violations;
 
     my $verbosity = $critic->config->verbose;
     my $color     = $critic->config->color();
