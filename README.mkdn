@@ -8,12 +8,12 @@ version 0.001000
 
 # DESCRIPTION
 
-I have a hard time understanding the output of `[Test::PerlCritic]`, its rather hard to read
-and is needlessly coated in cruft due to having to run through the `Test::` framework.
+I have a hard time understanding the output of `[Test::Perl::Critic]`, its rather hard to read and is needlessly coated in cruft
+due to having to run through the `Test::` framework.
 
 It also discards a few preferences from `perlcritic.rc` such as those that emit color codes.
 
-Again, conflated by the desire to run through the test framework.
+Again, conflated by the need to run through the test framework.
 
 I also don't necessarily want to make the tests pass just to release.
 
@@ -25,13 +25,22 @@ _TL;DR_
 
     ~ Happyness ~
 
+The result will be similar to doing:
+
+    dzil run --no-build perlcritic -p perlcritic.rc lib/
+
+Except that is useless to me because it doesn't output the filenames anywhere unless you have a verbosity level that incorporates
+a filename in _EACH_ violation, which for me, is undesriable clutter when you have 20 violations in a single file. ( And the most
+[verbose violation levels](https://metacpan.org/pod/perlcritic#verbose-N-FORMAT), that is, all except `1,2,3,5,7` lack `%f`.
+
 # CONFIGURATION
 
 This module has little configuration at this point.
 
 `perlcritic.rc` is the name of the default profile to use, and it must be in your _BUILT_ tree to be used.
 
-Alternatively, _IF_ you are using `[Test::Perl::Critic]` in your dist, the path specified to `perlcritic.rc` in that module will be used.
+Alternatively, _IF_ you are using `[Test::Perl::Critic]` in your dist, the path specified to `perlcritic.rc` in that module
+will be used.
 
 # AUTHOR
 
