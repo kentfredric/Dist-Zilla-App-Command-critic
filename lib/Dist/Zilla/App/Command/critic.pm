@@ -56,12 +56,14 @@ sub _colorize_by_severity {
     };
  
     my $config = $critic->config();
+    require Perl::Critic::Utils;
+
     my %color_of = (
-        $SEVERITY_HIGHEST   => $config->color_severity_highest(),
-        $SEVERITY_HIGH      => $config->color_severity_high(),
-        $SEVERITY_MEDIUM    => $config->color_severity_medium(),
-        $SEVERITY_LOW       => $config->color_severity_low(),
-        $SEVERITY_LOWEST    => $config->color_severity_lowest(),
+        $Perl::Critic::Utils::SEVERITY_HIGHEST   => $config->color_severity_highest(),
+        $Perl::Critic::Utils::SEVERITY_HIGH      => $config->color_severity_high(),
+        $Perl::Critic::Utils::SEVERITY_MEDIUM    => $config->color_severity_medium(),
+        $Perl::Critic::Utils::SEVERITY_LOW       => $config->color_severity_low(),
+        $Perl::Critic::Utils::SEVERITY_LOWEST    => $config->color_severity_lowest(),
     );
  
     return map { $self->_colorize( "$_", $color_of{$_->severity()} ) } @violations;
@@ -75,6 +77,9 @@ sub _report_file {
 
   my $verbosity = $critic->config->verbose;
   my $color     = $critic->config->color();
+
+  require Perl::Critic::Violation;
+  require Perl::Critic::Utils;
 
   Perl::Critic::Violation::set_format( 
     Perl::Critic::Utils::verbosity_to_format($verbosity) 
@@ -120,7 +125,7 @@ sub execute {
   my $critic = Perl::Critic->new( -profile => $path->child($critic_config)->stringify );
   
   $critic->policies();
-
+  
   my @files = Perl::Critic::Utils::all_perl_files( $path->child('lib')->stringify );
 
   for my $file ( @files ) {
