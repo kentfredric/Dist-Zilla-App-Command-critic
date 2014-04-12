@@ -1,0 +1,38 @@
+NAME
+    Dist::Zilla::App::Command::critic - build your dist and run perl critic
+    on the built files.
+
+VERSION
+    version 0.001000
+
+DESCRIPTION
+    I have a hard time understanding the output of "[Test::PerlCritic]", its
+    rather hard to read and is needlessly coated in cruft due to having to
+    run through the "Test::" framework.
+
+    It also discards a few preferences from "perlcritic.rc" such as those
+    that emit colour codes.
+
+    Again, conflated by the desire to run through the test framework.
+
+    I also don't necessarily want to make the tests pass just to release.
+
+    And I also don't necessarily want to run all the other tests just to
+    test critic.
+
+    *TL;DR*
+
+      dzil critic 
+
+      ~ Happyness ~
+
+AUTHOR
+    Kent Fredric <kentfredric@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2014 by Kent Fredric
+    <kentfredric@gmail.com>.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
