@@ -1,0 +1,57 @@
+NAME
+    Dist::Zilla::App::Command::critic - build your dist and run Perl::Critic
+    on the built files.
+
+VERSION
+    version 0.001000
+
+DESCRIPTION
+    I have a hard time understanding the output of "[Test::Perl::Critic]",
+    its rather hard to read and is needlessly coated in cruft due to having
+    to run through the "Test::" framework.
+
+    It also discards a few preferences from "perlcritic.rc" such as those
+    that emit color codes.
+
+    Again, conflated by the need to run through the test framework.
+
+    I also don't necessarily want to make the tests pass just to release.
+
+    And I also don't necessarily want to run all the other tests just to
+    test critic.
+
+    *TL;DR*
+
+      dzil critic
+
+      ~ Happyness ~
+
+    The result will be similar to doing:
+
+       dzil run --no-build perlcritic -p perlcritic.rc lib/
+
+    Except that is useless to me because it doesn't output the file names
+    anywhere unless you have a verbosity level that incorporates a file name
+    in *EACH* violation, which for me, is undesirable clutter when you have
+    20 violations in a single file. ( And the most verbose violation levels,
+    that is, all except "1,2,3,5,7" lack %f )
+
+CONFIGURATION
+    This module has little configuration at this point.
+
+    "perlcritic.rc" is the name of the default profile to use, and it must
+    be in your *BUILT* tree to be used.
+
+    Alternatively, *IF* you are using "[Test::Perl::Critic]" in your dist,
+    the path specified to "perlcritic.rc" in that module will be used.
+
+AUTHOR
+    Kent Fredric <kentfredric@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2014 by Kent Fredric
+    <kentfredric@gmail.com>.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
