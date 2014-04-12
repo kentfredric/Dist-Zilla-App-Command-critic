@@ -3,3 +3,8 @@ Release history for Dist-Zilla-App-Command-critic
 {{$NEXT}}
  - First version.
 
+ [Dependencies::Aggregate]
+ - 5.008: 216
+ - 5.010: 196
+ - 5.019: 175
+
