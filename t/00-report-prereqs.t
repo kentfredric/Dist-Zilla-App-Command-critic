@@ -112,6 +112,8 @@ my $static_prereqs = do { my $x = {
                                       'Path::Tiny' => '0',
                                       'Perl::Critic' => '0',
                                       'Perl::Critic::Utils' => '0',
+                                      'Term::ANSIColor' => '2.02',
+                                      'Try::Tiny' => '0',
                                       'perl' => '5.008',
                                       'strict' => '0',
                                       'utf8' => '0',

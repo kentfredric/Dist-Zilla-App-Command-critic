@@ -32,6 +32,70 @@ use Dist::Zilla::App -command;
 
 
 
+sub _colorize {
+    my ($self, $string, $color) = @_;
+    return $string if not defined $color;
+    return $string if $color eq $EMPTY;
+    # $terminator is a purely cosmetic change to make the color end at the end
+    # of the line rather than right before the next line. It is here because
+    # if you use background colors, some console windows display a little
+    # fragment of colored background before the next uncolored (or
+    # differently-colored) line.
+    my $terminator = chomp $string ? "\n" : $EMPTY;
+    return  Term::ANSIColor::colored( $string, $color ) . $terminator;
+}
+
+sub _colorize_by_severity {
+    my ( $self, $critic, @violations ) = @_;
+    return @violations if $OSNAME =~ m/MSWin32/xms;
+    return @violations if not eval {
+        require Term::ANSIColor;
+        Term::ANSIColor->VERSION( 2.02 );
+        1;
+    };
+ 
+    my $config = $critic->config();
+    my %color_of = (
+        $SEVERITY_HIGHEST   => $config->color_severity_highest(),
+        $SEVERITY_HIGH      => $config->color_severity_high(),
+        $SEVERITY_MEDIUM    => $config->color_severity_medium(),
+        $SEVERITY_LOW       => $config->color_severity_low(),
+        $SEVERITY_LOWEST    => $config->color_severity_lowest(),
+    );
+ 
+    return map { $self->_colorize( "$_", $color_of{$_->severity()} ) } @violations;
+ 
+}
+
+sub _report_file {
+  my ( $self, $critic, $file, @violations ) = @_;
+  
+  printf "%3d : %s\n", scalar @violations, $file;
+
+  my $verbosity = $critic->config->verbose;
+  my $color     = $critic->config->color();
+
+  Perl::Critic::Violation::set_format( 
+    Perl::Critic::Utils::verbosity_to_format($verbosity) 
+  );
+
+  if ( not $color ) {
+    print @violations;
+    return;
+  }
+  return print $self->_colorize_by_severity( $critic, @violations );
+}
+
+sub _critique_file {
+  my ( $self, $critic, $file ) = @_;
+  Try::Tiny::try {
+      my @violations = $critic->critique("$file");
+      $self->_report_file( $file, @violations );
+  } Try::Tiny::catch {
+      $self->zilla->log_warn($_);
+  };
+}
+
 sub execute {
   my ( $self, $opt, $arg ) = @_;
 
@@ -45,6 +109,7 @@ sub execute {
   }
   
   require Path::Tiny;
+  require Try::Tiny;
 
   my $path = Path::Tiny::path($target);
 
@@ -59,8 +124,8 @@ sub execute {
 
   for my $file ( @files ) {
     $self->zilla->log("critic> " . Path::Tiny::path($file)->relative($path) );
-    $critic->critique("$file");
-  }
+    
+     }
   
 }
 
