@@ -103,11 +103,11 @@ sub _report_file {
         Perl::Critic::Utils::verbosity_to_format($verbosity) );
 
     if ( not $color ) {
-        print @violations or $self->zilla->log_fatal("Error printing to STDOUT");
+        print @violations or $self->zilla->log_fatal(q[Error printing to STDOUT]);
         return;
     }
     print $self->_colorize_by_severity( $critic, @violations )
-      or $self->zilla->log_fatal("Error printing to STDOUT");
+      or $self->zilla->log_fatal(q[Error printing to STDOUT]);
     return;
 }
 
