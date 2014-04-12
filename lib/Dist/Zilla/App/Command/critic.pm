@@ -99,7 +99,7 @@ sub _report_file {
     if ( @violations > 0 ) {
         $self->_print("\n");
     }
-    $self->_print( sprintf "___[ %s : %d violations ]___\n",
+    $self->_print( sprintf "%s : %d violations\n",
         $rpath, scalar @violations );
 
     if ( @violations > 0 ) {
