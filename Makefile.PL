@@ -21,7 +21,6 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Dist::Zilla::App::Command::critic",
   "PREREQ_PM" => {
-    "Data::Dump" => 0,
     "Dist::Zilla::App" => 0,
     "Path::Tiny" => 0,
     "Perl::Critic" => 0,
@@ -45,7 +44,6 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "Data::Dump" => 0,
   "Dist::Zilla::App" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec::Functions" => 0,

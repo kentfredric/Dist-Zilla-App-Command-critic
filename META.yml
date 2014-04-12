@@ -22,7 +22,6 @@ provides:
     file: lib/Dist/Zilla/App/Command/critic.pm
     version: '0.001000'
 requires:
-  Data::Dump: '0'
   Dist::Zilla::App: '0'
   Path::Tiny: '0'
   Perl::Critic: '0'
@@ -36,7 +35,6 @@ x_BuiltWith:
   modules:
     CPAN::Meta: '2.140640'
     CPAN::Meta::Requirements: '2.125'
-    Data::Dump: '1.22'
     Dist::Zilla::App: '5.015'
     Dist::Zilla::Plugin::Authority: '1.006'
     Dist::Zilla::Plugin::AutoPrereqs: '5.015'
