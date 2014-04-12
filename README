@@ -34,7 +34,7 @@ DESCRIPTION
     anywhere unless you have a verbosity level that incorporates a filename
     in *EACH* violation, which for me, is undesriable clutter when you have
     20 violations in a single file. ( And the most verbose violation levels,
-    that is, all except "1,2,3,5,7" lack %f.
+    that is, all except "1,2,3,5,7" lack %f )
 
 CONFIGURATION
     This module has little configuration at this point.
