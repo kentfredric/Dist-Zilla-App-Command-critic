@@ -107,6 +107,9 @@ my $static_prereqs = do { my $x = {
                                     }
                     },
        'runtime' => {
+                      'recommends' => {
+                                        'Term::ANSIColor' => '0'
+                                      },
                       'requires' => {
                                       'Dist::Zilla::App' => '0',
                                       'Path::Tiny' => '0',
@@ -114,7 +117,6 @@ my $static_prereqs = do { my $x = {
                                       'Perl::Critic::Utils' => '0',
                                       'Perl::Critic::Utils::Constants' => '0',
                                       'Perl::Critic::Violation' => '0',
-                                      'Term::ANSIColor' => '0',
                                       'Try::Tiny' => '0',
                                       'perl' => '5.008',
                                       'strict' => '0',

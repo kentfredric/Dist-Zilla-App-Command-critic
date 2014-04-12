@@ -78,6 +78,9 @@
          }
       },
       "runtime" : {
+         "recommends" : {
+            "Term::ANSIColor" : "0"
+         },
          "requires" : {
             "Dist::Zilla::App" : "0",
             "Path::Tiny" : "0",
@@ -85,7 +88,6 @@
             "Perl::Critic::Utils" : "0",
             "Perl::Critic::Utils::Constants" : "0",
             "Perl::Critic::Violation" : "0",
-            "Term::ANSIColor" : "0",
             "Try::Tiny" : "0",
             "perl" : "5.008",
             "strict" : "0",
@@ -758,6 +760,21 @@
             },
             "name" : "Prereqs",
             "version" : "5.015"
+         },
+         {
+            "class" : "Dist::Zilla::Plugin::Prereqs::Soften",
+            "config" : {
+               "Dist::Zilla::Plugin::Prereqs::Soften" : {
+                  "copy_to" : [],
+                  "modules" : [
+                     "Term::ANSIColor"
+                  ],
+                  "modules_from_features" : null,
+                  "to_relationship" : "recommends"
+               }
+            },
+            "name" : "Prereqs::Soften",
+            "version" : "0.004000"
          },
          {
             "class" : "Dist::Zilla::Plugin::FinderCode",
