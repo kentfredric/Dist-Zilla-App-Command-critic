@@ -1,4 +1,4 @@
-use 5.008; # utf8
+use 5.008;    # utf8
 use strict;
 use warnings;
 use utf8;
@@ -33,16 +33,17 @@ use Dist::Zilla::App -command;
 
 
 sub _colorize {
-    my ($self, $string, $color) = @_;
+    my ( $self, $string, $color ) = @_;
     return $string if not defined $color;
     return $string if $color eq q[];
+
     # $terminator is a purely cosmetic change to make the color end at the end
     # of the line rather than right before the next line. It is here because
     # if you use background colors, some console windows display a little
     # fragment of colored background before the next uncolored (or
     # differently-colored) line.
     my $terminator = chomp $string ? "\n" : q[];
-    return  Term::ANSIColor::colored( $string, $color ) . $terminator;
+    return Term::ANSIColor::colored( $string, $color ) . $terminator;
 }
 
 sub _colorize_by_severity {
@@ -51,90 +52,97 @@ sub _colorize_by_severity {
     return @violations if not eval {
         require Term::ANSIColor;
         require Perl::Critic::Utils::Constants;
-        Term::ANSIColor->VERSION( $Perl::Critic::Utils::Constants::_MODULE_VERSION_TERM_ANSICOLOR );
+        Term::ANSIColor->VERSION(
+            $Perl::Critic::Utils::Constants::_MODULE_VERSION_TERM_ANSICOLOR);
         1;
     };
- 
+
     my $config = $critic->config();
     require Perl::Critic::Utils;
 
     my %color_of = (
-        $Perl::Critic::Utils::SEVERITY_HIGHEST   => $config->color_severity_highest(),
-        $Perl::Critic::Utils::SEVERITY_HIGH      => $config->color_severity_high(),
-        $Perl::Critic::Utils::SEVERITY_MEDIUM    => $config->color_severity_medium(),
-        $Perl::Critic::Utils::SEVERITY_LOW       => $config->color_severity_low(),
-        $Perl::Critic::Utils::SEVERITY_LOWEST    => $config->color_severity_lowest(),
+        $Perl::Critic::Utils::SEVERITY_HIGHEST =>
+          $config->color_severity_highest(),
+        $Perl::Critic::Utils::SEVERITY_HIGH => $config->color_severity_high(),
+        $Perl::Critic::Utils::SEVERITY_MEDIUM =>
+          $config->color_severity_medium(),
+        $Perl::Critic::Utils::SEVERITY_LOW => $config->color_severity_low(),
+        $Perl::Critic::Utils::SEVERITY_LOWEST =>
+          $config->color_severity_lowest(),
     );
- 
-    return map { $self->_colorize( "$_", $color_of{$_->severity()} ) } @violations;
- 
+
+    return
+      map { $self->_colorize( "$_", $color_of{ $_->severity() } ) } @violations;
+
 }
 
 sub _report_file {
-  my ( $self, $critic, $file, @violations ) = @_;
-  
-  printf "%3d : %s\n", scalar @violations, $file;
+    my ( $self, $critic, $file, @violations ) = @_;
 
-  my $verbosity = $critic->config->verbose;
-  my $color     = $critic->config->color();
+    printf "%3d : %s\n", scalar @violations, $file;
 
-  require Perl::Critic::Violation;
-  require Perl::Critic::Utils;
+    my $verbosity = $critic->config->verbose;
+    my $color     = $critic->config->color();
 
-  Perl::Critic::Violation::set_format( 
-    Perl::Critic::Utils::verbosity_to_format($verbosity) 
-  );
+    require Perl::Critic::Violation;
+    require Perl::Critic::Utils;
 
-  if ( not $color ) {
-    print @violations;
-    return;
-  }
-  return print $self->_colorize_by_severity( $critic, @violations );
+    Perl::Critic::Violation::set_format(
+        Perl::Critic::Utils::verbosity_to_format($verbosity) );
+
+    if ( not $color ) {
+        print @violations;
+        return;
+    }
+    return print $self->_colorize_by_severity( $critic, @violations );
 }
 
 sub _critique_file {
-  my ( $self, $critic, $file ) = @_;
-  Try::Tiny::try {
-      my @violations = $critic->critique("$file");
-      $self->_report_file( $file, @violations );
-  } Try::Tiny::catch {
-      $self->zilla->log($_);
-  };
+    my ( $self, $critic, $file ) = @_;
+    Try::Tiny::try {
+        my @violations = $critic->critique("$file");
+        $self->_report_file( $critic, $file, @violations );
+    }
+    Try::Tiny::catch {
+        $self->zilla->log($_);
+    };
 }
 
 sub execute {
-  my ( $self, $opt, $arg ) = @_;
+    my ( $self, $opt, $arg ) = @_;
 
-  my ( $target, $latest ) = $self->zilla->ensure_built_in_tmpdir;
+    my ( $target, $latest ) = $self->zilla->ensure_built_in_tmpdir;
 
-  my $critic_config       = 'perlcritic.rc';
+    my $critic_config = 'perlcritic.rc';
 
-  for my $plugin (@{  $self->zilla->plugins }) {
-    next unless $plugin->isa('Dist::Zilla::Plugin::Test::Perl::Critic');
-    $critic_config = $plugin->critic_config if $plugin->critic_config;
-  }
-  
-  require Path::Tiny;
-  require Try::Tiny;
+    for my $plugin ( @{ $self->zilla->plugins } ) {
+        next unless $plugin->isa('Dist::Zilla::Plugin::Test::Perl::Critic');
+        $critic_config = $plugin->critic_config if $plugin->critic_config;
+    }
 
-  my $path = Path::Tiny::path($target);
+    require Path::Tiny;
+    require Try::Tiny;
 
-  require Perl::Critic;
-  require Perl::Critic::Utils;
+    my $path = Path::Tiny::path($target);
 
-  my $critic = Perl::Critic->new( -profile => $path->child($critic_config)->stringify );
-  
-  $critic->policies();
-  
-  my @files = Perl::Critic::Utils::all_perl_files( $path->child('lib')->stringify );
+    require Perl::Critic;
+    require Perl::Critic::Utils;
 
-  for my $file ( @files ) {
-    $self->zilla->log("critic> " . Path::Tiny::path($file)->relative($path) );
-    $self->_critique_file( $critic, $file );
-  }
-  
+    my $critic =
+      Perl::Critic->new( -profile => $path->child($critic_config)->stringify );
+
+    $critic->policies();
+
+    my @files =
+      Perl::Critic::Utils::all_perl_files( $path->child('lib')->stringify );
+
+    for my $file (@files) {
+        $self->zilla->log(
+            "critic> " . Path::Tiny::path($file)->relative($path) );
+        $self->_critique_file( $critic, $file );
+    }
+
 }
-
 
 1;
 
