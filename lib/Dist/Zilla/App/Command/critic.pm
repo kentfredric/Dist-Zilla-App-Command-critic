@@ -77,9 +77,9 @@ sub _colorize_by_severity {
 }
 
 sub _report_file {
-    my ( $self, $critic, $file, @violations ) = @_;
+    my ( $self, $critic, $file, $rpath, @violations ) = @_;
 
-    printf "\n___[ %s : %n violations ]___\n\n", $file, scalar @violations;
+    printf "\n___[ %s : %n violations ]___\n\n", $rpath, scalar @violations;
 
     my $verbosity = $critic->config->verbose;
     my $color     = $critic->config->color();
@@ -98,10 +98,10 @@ sub _report_file {
 }
 
 sub _critique_file {
-    my ( $self, $critic, $file ) = @_;
+    my ( $self, $critic, $file , $rpath ) = @_;
     Try::Tiny::try {
         my @violations = $critic->critique("$file");
-        $self->_report_file( $critic, $file, @violations );
+        $self->_report_file( $critic, $file, $rpath, @violations );
     }
     Try::Tiny::catch {
         $self->zilla->log($_);
@@ -137,9 +137,8 @@ sub execute {
       Perl::Critic::Utils::all_perl_files( $path->child('lib')->stringify );
 
     for my $file (@files) {
-        $self->zilla->log(
-            "critic> " . Path::Tiny::path($file)->relative($path) );
-        $self->_critique_file( $critic, $file );
+       my $rpath = Path::Tiny::path($file)->relative($path);
+        $self->_critique_file( $critic, $file , $rpath );
     }
 
 }
