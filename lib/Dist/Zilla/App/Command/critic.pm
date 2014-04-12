@@ -48,7 +48,23 @@ sub execute {
 
   require Data::Dump;
 
+  my $path = Path::Tiny::path($target);
+
   print Data::Dump::pp( $target, $latest );
+
+  require Perl::Critic;
+  require Perl::Critic::Utils;
+
+  my $critic = Perl::Critic->new( -profile => $path->child($critic_config)->stringify );
+  
+  $critic->policies();
+
+  my @files = Perl::Critic::Utils::all_perl_files( $path->child('lib')->stringify );
+
+  for my $file ( @files ) {
+    $self->zilla->log("critic> $file");
+    $critic->critique("$file");
+  }
   
 }
 
