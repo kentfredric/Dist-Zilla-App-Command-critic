@@ -43,9 +43,9 @@ use Dist::Zilla::App '-command';
 
 
 sub _colorize {
-    my ( $self, $string, $color ) = @_;
+    my ( undef, $string, $color ) = @_;
     return $string if not defined $color;
-    return $string if $color eq q[];
+    return $string if q[] eq $color;
 
     # $terminator is a purely cosmetic change to make the color end at the end
     # of the line rather than right before the next line. It is here because
@@ -62,6 +62,7 @@ sub _colorize_by_severity {
     return @violations if not eval {
         require Term::ANSIColor;
         require Perl::Critic::Utils::Constants;
+        ## no critic (Variables::ProtectPrivateVars)
         Term::ANSIColor->VERSION(
             $Perl::Critic::Utils::Constants::_MODULE_VERSION_TERM_ANSICOLOR);
         1;
@@ -87,7 +88,7 @@ sub _colorize_by_severity {
 }
 
 sub _report_file {
-    my ( $self, $critic, $file, $rpath, @violations ) = @_;
+    my ( $self, $critic, undef, $rpath, @violations ) = @_;
 
     printf "\n___[ %s : %d violations ]___\n\n", $rpath, scalar @violations;
 
@@ -97,14 +98,17 @@ sub _report_file {
     require Perl::Critic::Violation;
     require Perl::Critic::Utils;
 
+    ## no critic (Subroutines::ProhibitCallsToUnexportedSubs)
     Perl::Critic::Violation::set_format(
         Perl::Critic::Utils::verbosity_to_format($verbosity) );
 
     if ( not $color ) {
-        print @violations;
+        print @violations or $self->zilla->log_fatal("Error printing to STDOUT");
         return;
     }
-    return print $self->_colorize_by_severity( $critic, @violations );
+    print $self->_colorize_by_severity( $critic, @violations )
+      or $self->zilla->log_fatal("Error printing to STDOUT");
+    return;
 }
 
 sub _critique_file {
@@ -116,12 +120,13 @@ sub _critique_file {
     Try::Tiny::catch {
         $self->zilla->log($_);
     };
+    return;
 }
 
 sub execute {
-    my ( $self, $opt, $arg ) = @_;
+    my ( $self, undef,undef ) = @_;
 
-    my ( $target, $latest ) = $self->zilla->ensure_built_in_tmpdir;
+    my ( $target, undef ) = $self->zilla->ensure_built_in_tmpdir;
 
     my $critic_config = 'perlcritic.rc';
 
@@ -143,6 +148,7 @@ sub execute {
 
     $critic->policies();
 
+    ## no critic (Subroutines::ProhibitCallsToUnexportedSubs)
     my @files =
       Perl::Critic::Utils::all_perl_files( $path->child('lib')->stringify );
 
@@ -150,7 +156,7 @@ sub execute {
        my $rpath = Path::Tiny::path($file)->relative($path);
         $self->_critique_file( $critic, $file , $rpath );
     }
-
+    return 0;
 }
 
 1;
