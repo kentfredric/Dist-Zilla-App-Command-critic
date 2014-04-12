@@ -30,9 +30,9 @@ DESCRIPTION
 
        dzil run --no-build perlcritic -p perlcritic.rc lib/
 
-    Except that is useless to me because it doesn't output the filenames
-    anywhere unless you have a verbosity level that incorporates a filename
-    in *EACH* violation, which for me, is undesriable clutter when you have
+    Except that is useless to me because it doesn't output the file names
+    anywhere unless you have a verbosity level that incorporates a file name
+    in *EACH* violation, which for me, is undesireable clutter when you have
     20 violations in a single file. ( And the most verbose violation levels,
     that is, all except "1,2,3,5,7" lack %f )
 
