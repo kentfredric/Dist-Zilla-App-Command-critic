@@ -116,7 +116,7 @@ sub _report_file {
         Perl::Critic::Utils::verbosity_to_format($verbosity) );
 
     if ( not $color ) {
-        $self->_print(@violations) return;
+        $self->_print(@violations);
     }
     $self->_print( $self->_colorize_by_severity( $critic, @violations ) );
     return;
