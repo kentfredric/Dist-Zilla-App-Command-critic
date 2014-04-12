@@ -130,8 +130,8 @@ sub execute {
 
   for my $file ( @files ) {
     $self->zilla->log("critic> " . Path::Tiny::path($file)->relative($path) );
-    
-     }
+    $self->_critique_file( $critic, $file );
+  }
   
 }
 
