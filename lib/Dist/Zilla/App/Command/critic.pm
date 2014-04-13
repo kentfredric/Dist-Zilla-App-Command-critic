@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Dist::Zilla::App::Command::critic;
-$Dist::Zilla::App::Command::critic::VERSION = '0.001000';
+$Dist::Zilla::App::Command::critic::VERSION = '0.001001';
 # ABSTRACT: build your dist and run Perl::Critic on the built files.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -161,7 +161,7 @@ sub execute {
   $critic->policies();
 
   ## no critic (Subroutines::ProhibitCallsToUnexportedSubs)
-  my @files = Perl::Critic::Utils::all_perl_files( $path->child('lib')->stringify );
+  my @files = Perl::Critic::Utils::all_perl_files( $path->stringify );
 
   for my $file (@files) {
     my $rpath = Path::Tiny::path($file)->relative($path);
@@ -184,7 +184,7 @@ Dist::Zilla::App::Command::critic - build your dist and run Perl::Critic on the 
 
 =head1 VERSION
 
-version 0.001000
+version 0.001001
 
 =head1 DESCRIPTION
 
