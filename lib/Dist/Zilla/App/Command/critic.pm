@@ -161,9 +161,8 @@ sub execute {
   $critic->policies();
 
   ## no critic (Subroutines::ProhibitCallsToUnexportedSubs)
-  my @files = Perl::Critic::Utils::all_perl_files( 
-     map { $_->stringify } grep { -d $_ } map { $path->child($_) } qw( lib bin script )
-  );
+  my @files =
+    Perl::Critic::Utils::all_perl_files( map { $_->stringify } grep { -d $_ } map { $path->child($_) } qw( lib bin script ), );
 
   for my $file (@files) {
     my $rpath = Path::Tiny::path($file)->relative($path);
