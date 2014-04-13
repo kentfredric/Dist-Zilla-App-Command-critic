@@ -136,6 +136,17 @@ sub _critique_file {
   return;
 }
 
+sub _subdirs {
+  my ( undef, $root, @children ) = @_;
+  my @out;
+  for my $child (@children) {
+    my $path = $root->child($child);
+    next unless -d $path;
+    push @out, $path->stringify;
+  }
+  return @out;
+}
+
 sub execute {
   my ( $self, undef, undef ) = @_;
 
@@ -161,7 +172,7 @@ sub execute {
   $critic->policies();
 
   ## no critic (Subroutines::ProhibitCallsToUnexportedSubs)
-  my @files = Perl::Critic::Utils::all_perl_files( $path->child('lib')->stringify );
+  my @files = Perl::Critic::Utils::all_perl_files( $self->_subdirs( $path, qw( lib bin script ) ) );
 
   for my $file (@files) {
     my $rpath = Path::Tiny::path($file)->relative($path);
