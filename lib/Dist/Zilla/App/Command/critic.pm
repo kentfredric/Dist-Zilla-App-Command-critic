@@ -137,7 +137,7 @@ sub _critique_file {
 }
 
 sub _subdirs {
-  my ( $self, $root, @children ) = @_;
+  my ( undef, $root, @children ) = @_;
   my @out;
   for my $child (@children) {
     my $path = $root->child($child);
