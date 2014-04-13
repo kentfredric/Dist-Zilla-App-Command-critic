@@ -139,8 +139,8 @@ sub _critique_file {
 sub _subdirs {
   my ( $self, $root, @children ) = @_;
   my @out;
-  for my $sub (@children) {
-    my $path = $root->child($path);
+  for my $child (@children) {
+    my $path = $root->child($child);
     next unless -d $path;
     push @out, $path->stringify;
   }
