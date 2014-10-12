@@ -5,6 +5,8 @@ use utf8;
 
 package Dist::Zilla::App::Command::critic;
 
+our $VERSION = '0.001002';
+
 # ABSTRACT: build your dist and run Perl::Critic on the built files.
 
 # AUTHORITY
