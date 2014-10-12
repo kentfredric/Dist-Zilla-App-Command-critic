@@ -1,9 +1,25 @@
 Release history for Dist-Zilla-App-Command-critic
 
+0.001002 2014-10-12T14:14:11Z 8fd643f
+ [Dependencies::Stats]
+ - Dependencies changed since 0.001001, see misc/*.deps* for details
+ - configure: ↓1 (recommends: ↑1)
+ - develop: +8 ↑2 -3 (suggests: +2 -1)
+ - test: +5 -3 (recommends: ↑3 -1)
+
+ [Meta]
+ - Move to KENTNL github org.
+ - Author = kentnl@cpan
+
+ [Packaging]
+ - Packaging cleaned up a bit
+
+ [Tests]
+ - Basic behaviour tests added
+
 0.001001 2014-04-13T01:46:56Z
  [Bugfix]
- - Include bin and script in all_perl_files search roots. I'm not sure how
-   Test::Perl::Critic seems to do this.
+ - Include bin and script in all_perl_files search roots. I'm not sure how Test::Perl::Critic seems to do this.
 
 0.001000 2014-04-12T23:42:06Z
  - First version.

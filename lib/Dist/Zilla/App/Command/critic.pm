@@ -4,7 +4,9 @@ use warnings;
 use utf8;
 
 package Dist::Zilla::App::Command::critic;
-$Dist::Zilla::App::Command::critic::VERSION = '0.001001';
+
+our $VERSION = '0.001002';
+
 # ABSTRACT: build your dist and run Perl::Critic on the built files.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -131,7 +133,7 @@ sub _critique_file {
     $self->_report_file( $critic, $file, $rpath, @violations );
   }
   Try::Tiny::catch {
-    $self->zilla->log($_);
+    $self->zilla->log($_);    ## no critic (BuiltinFunctions::ProhibitUselessTopic)
   };
   return;
 }
@@ -195,7 +197,7 @@ Dist::Zilla::App::Command::critic - build your dist and run Perl::Critic on the 
 
 =head1 VERSION
 
-version 0.001001
+version 0.001002
 
 =head1 DESCRIPTION
 
@@ -235,7 +237,7 @@ will be used.
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
