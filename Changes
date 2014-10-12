@@ -1,6 +1,6 @@
 Release history for Dist-Zilla-App-Command-critic
 
-0.001002 2014-10-12T13:51:06Z e24646a
+0.001002 2014-10-12T14:14:11Z 8fd643f
  [Dependencies::Stats]
  - Dependencies changed since 0.001001, see misc/*.deps* for details
  - configure: ↓1 (recommends: ↑1)
