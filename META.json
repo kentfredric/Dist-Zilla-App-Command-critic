@@ -108,8 +108,12 @@
             "Test::More" : "1.001006"
          },
          "requires" : {
+            "Dist::Zilla::App::Tester" : "0",
+            "Dist::Zilla::Plugin::GatherDir" : "0",
+            "Dist::Zilla::Util::Test::KENTNL" : "1.003001",
             "ExtUtils::MakeMaker" : "0",
             "File::Spec" : "0",
+            "Test::DZil" : "0",
             "Test::More" : "0.89"
          }
       }
@@ -139,6 +143,7 @@
          "Dist::Zilla" : "5.020",
          "Dist::Zilla::App" : "5.020",
          "Dist::Zilla::App::Command::bakeini" : "0.001002",
+         "Dist::Zilla::App::Tester" : "5.020",
          "Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes" : "0.003006",
          "Dist::Zilla::Plugin::Authority" : "1.006",
          "Dist::Zilla::Plugin::AutoPrereqs" : "5.020",
@@ -146,6 +151,7 @@
          "Dist::Zilla::Plugin::ConfirmRelease" : "5.020",
          "Dist::Zilla::Plugin::CopyFilesFromBuild" : "0.103510",
          "Dist::Zilla::Plugin::EOLTests" : "0.02",
+         "Dist::Zilla::Plugin::GatherDir" : "5.020",
          "Dist::Zilla::Plugin::Git::Check" : "2.025",
          "Dist::Zilla::Plugin::Git::Commit" : "2.025",
          "Dist::Zilla::Plugin::Git::CommitBuild" : "2.025",
@@ -186,6 +192,7 @@
          "Dist::Zilla::Plugin::Twitter" : "0.026",
          "Dist::Zilla::Plugin::UploadToCPAN" : "5.020",
          "Dist::Zilla::PluginBundle::Author::KENTNL" : "2.021000",
+         "Dist::Zilla::Util::Test::KENTNL" : "1.003003",
          "ExtUtils::MakeMaker" : "6.98",
          "File::Spec" : "3.49",
          "Path::Tiny" : "0.058",
@@ -197,6 +204,7 @@
          "Term::ANSIColor" : "4.03",
          "Test::CPAN::Changes" : "0.30",
          "Test::CPAN::Meta" : "0.23",
+         "Test::DZil" : "5.020",
          "Test::Kwalitee" : "1.22",
          "Test::More" : "1.001006",
          "Test::Pod" : "1.48",
