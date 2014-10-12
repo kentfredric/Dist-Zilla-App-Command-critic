@@ -2,7 +2,11 @@ This file contains changes in REQUIRED dependencies for standard CPAN phases (co
 
 0.001002
  [Added / test requires]
+ - Dist::Zilla::App::Tester
+ - Dist::Zilla::Plugin::GatherDir
+ - Dist::Zilla::Util::Test::KENTNL 1.003001
  - File::Spec
+ - Test::DZil
 
  [Changed / configure requires]
  - ExtUtils::MakeMaker 6.30 → 0
