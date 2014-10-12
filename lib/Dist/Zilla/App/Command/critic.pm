@@ -133,7 +133,7 @@ sub _critique_file {
     $self->_report_file( $critic, $file, $rpath, @violations );
   }
   Try::Tiny::catch {
-    $self->zilla->log($_);
+    $self->zilla->log($_);    ## no critic (BuiltinFunctions::ProhibitUselessTopic)
   };
   return;
 }
