@@ -11,6 +11,10 @@ Release history for Dist-Zilla-App-Command-critic
  - Move to KENTNL github org.
  - Author = kentnl@cpan
 
+ [Packaging]
+ - no code changes.
+ - Packaging cleaned up a bit
+
 0.001001 2014-04-13T01:46:56Z
  [Bugfix]
  - Include bin and script in all_perl_files search roots. I'm not sure how Test::Perl::Critic seems to do this.
