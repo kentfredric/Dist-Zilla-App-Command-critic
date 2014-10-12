@@ -16,7 +16,11 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  - Dist::Zilla::PluginBundle::Author::KENTNL 2.021000
 
  [Added / test requires]
+ - Dist::Zilla::App::Tester
+ - Dist::Zilla::Plugin::GatherDir
+ - Dist::Zilla::Util::Test::KENTNL 1.003001
  - File::Spec
+ - Test::DZil
 
  [Changed / configure recommends]
  - ExtUtils::MakeMaker 6.96 → 6.98
