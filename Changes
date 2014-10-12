@@ -4,8 +4,7 @@ Release history for Dist-Zilla-App-Command-critic
 
 0.001001 2014-04-13T01:46:56Z
  [Bugfix]
- - Include bin and script in all_perl_files search roots. I'm not sure how
-   Test::Perl::Critic seems to do this.
+ - Include bin and script in all_perl_files search roots. I'm not sure how Test::Perl::Critic seems to do this.
 
 0.001000 2014-04-12T23:42:06Z
  - First version.
