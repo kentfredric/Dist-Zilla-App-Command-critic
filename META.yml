@@ -1,7 +1,7 @@
 ---
 abstract: 'build your dist and run Perl::Critic on the built files.'
 author:
-  - 'Kent Fredric <kentfredric@gmail.com>'
+  - 'Kent Fredric <kentnl@cpan.org>'
 build_requires:
   ExtUtils::MakeMaker: '0'
   File::Spec: '0'
@@ -628,5 +628,3 @@ x_Dist_Zilla:
       is_trial: '0'
     version: '5.020'
 x_authority: cpan:KENTNL
-x_contributors:
-  - 'Kent Fredric <kentnl@cpan.org>'
