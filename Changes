@@ -1,6 +1,6 @@
 Release history for Dist-Zilla-App-Command-critic
 
-0.001002 2014-10-12T13:49:51Z 62bb5fa
+0.001002 2014-10-12T13:51:06Z e24646a
  [Dependencies::Stats]
  - Dependencies changed since 0.001001, see misc/*.deps* for details
  - configure: ↓1 (recommends: ↑1)
@@ -10,6 +10,10 @@ Release history for Dist-Zilla-App-Command-critic
  [Meta]
  - Move to KENTNL github org.
  - Author = kentnl@cpan
+
+ [Packaging]
+ - no code changes.
+ - Packaging cleaned up a bit
 
 0.001001 2014-04-13T01:46:56Z
  [Bugfix]
