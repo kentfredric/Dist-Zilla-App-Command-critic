@@ -122,13 +122,13 @@
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/kentfredric/Dist-Zilla-App-Command-critic/issues"
+         "web" : "https://github.com/kentnl/Dist-Zilla-App-Command-critic/issues"
       },
-      "homepage" : "https://github.com/kentfredric/Dist-Zilla-App-Command-critic",
+      "homepage" : "https://github.com/kentnl/Dist-Zilla-App-Command-critic",
       "repository" : {
          "type" : "git",
-         "url" : "https://github.com/kentfredric/Dist-Zilla-App-Command-critic.git",
-         "web" : "https://github.com/kentfredric/Dist-Zilla-App-Command-critic"
+         "url" : "https://github.com/kentnl/Dist-Zilla-App-Command-critic.git",
+         "web" : "https://github.com/kentnl/Dist-Zilla-App-Command-critic"
       }
    },
    "version" : "0.001002",
