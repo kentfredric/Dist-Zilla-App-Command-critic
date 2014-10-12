@@ -4,7 +4,7 @@ use warnings;
 use utf8;
 
 package Dist::Zilla::App::Command::critic;
-$Dist::Zilla::App::Command::critic::VERSION = '0.001001';
+$Dist::Zilla::App::Command::critic::VERSION = '0.001002';
 # ABSTRACT: build your dist and run Perl::Critic on the built files.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
@@ -195,7 +195,7 @@ Dist::Zilla::App::Command::critic - build your dist and run Perl::Critic on the 
 
 =head1 VERSION
 
-version 0.001001
+version 0.001002
 
 =head1 DESCRIPTION
 
