@@ -1,11 +1,10 @@
-use 5.008;    # utf8
+use 5.006;
 use strict;
 use warnings;
-use utf8;
 
 package Dist::Zilla::App::Command::critic;
 
-our $VERSION = '0.001002';
+our $VERSION = '0.001003';
 
 # ABSTRACT: build your dist and run Perl::Critic on the built files.
 
@@ -197,7 +196,7 @@ Dist::Zilla::App::Command::critic - build your dist and run Perl::Critic on the 
 
 =head1 VERSION
 
-version 0.001002
+version 0.001003
 
 =head1 DESCRIPTION
 
