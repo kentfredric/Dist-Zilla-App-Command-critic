@@ -10,10 +10,10 @@ build_requires:
   File::Spec: '0'
   Test::DZil: '0'
   Test::More: '0.89'
-  perl: '5.008'
+  perl: '5.006'
 configure_requires:
   ExtUtils::MakeMaker: '0'
-  perl: '5.008'
+  perl: '5.006'
 dynamic_config: '0'
 generated_by: 'Dist::Zilla version 5.022, CPAN::Meta::Converter version 2.142690'
 license: perl
@@ -35,9 +35,8 @@ requires:
   Perl::Critic::Utils::Constants: '0'
   Perl::Critic::Violation: '0'
   Try::Tiny: '0'
-  perl: '5.008'
+  perl: '5.006'
   strict: '0'
-  utf8: '0'
   warnings: '0'
 resources:
   bugtracker: https://github.com/kentnl/Dist-Zilla-App-Command-critic/issues
@@ -119,7 +118,6 @@ x_BuiltWith:
     Test::Pod::Coverage: '1.10'
     Try::Tiny: '0.22'
     strict: '1.08'
-    utf8: '1.14'
     warnings: '1.26'
   perl:
     original: v5.21.3
