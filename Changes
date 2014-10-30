@@ -1,12 +1,16 @@
 Release history for Dist-Zilla-App-Command-critic
 
-0.001003 2014-10-30T23:30:58Z c743719
+0.001003 2014-10-30T23:33:56Z ce4d03b
  [Dependencies::Stats]
  - Dependencies changed since 0.001002, see misc/*.deps* for details
  - configure: +1 (recommends: ↑1)
  - develop: +3 -1 (recommends: +1, suggests: ↑2)
  - runtime: ↓1 -1
  - test: +1 (recommends: ↑2)
+
+ [Internals]
+ - Stop loading utf8 ( optimisation )
+ - 5.006 is now minimum perl.
 
 0.001002 2014-10-12T14:14:11Z 8fd643f
  [Dependencies::Stats]
