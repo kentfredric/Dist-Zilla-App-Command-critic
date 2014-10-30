@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::App::Command::critic;
 
-our $VERSION = '0.001003';
+our $VERSION = '0.001004';
 
 # ABSTRACT: build your dist and run Perl::Critic on the built files.
 
