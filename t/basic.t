@@ -3,7 +3,7 @@ use warnings;
 
 use Test::More;
 use Dist::Zilla::App::Tester;
-use Dist::Zilla::Util::Test::KENTNL 1.003001 qw( dztest );
+use Dist::Zilla::Util::Test::KENTNL 1.004002 qw( dztest ); # subtest bug
 use Dist::Zilla::Plugin::GatherDir;
 use Test::DZil qw( simple_ini );
 
