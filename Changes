@@ -1,6 +1,8 @@
 Release history for Dist-Zilla-App-Command-critic
 
 {{$NEXT}}
+
+0.001004 2014-11-01T13:07:20Z 437dbe4
  [Bugfix]
  - Avoid test failures due to old versions of Test::More not doing subtest right ( via upgrade on the module that
    uses it )
