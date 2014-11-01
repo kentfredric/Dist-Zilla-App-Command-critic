@@ -1,6 +1,14 @@
 Release history for Dist-Zilla-App-Command-critic
 
-0.001004 2014-10-30T23:34:47Z f738bbf
+0.001004 2014-11-01T13:07:20Z 437dbe4
+ [Bugfix]
+ - Avoid test failures due to old versions of Test::More not doing subtest right ( via upgrade on the module that
+   uses it )
+
+ [Dependencies::Stats]
+ - Dependencies changed since 0.001003, see misc/*.deps* for details
+ - develop: (suggests: ↑1)
+ - test: ↑1
 
 0.001003 2014-10-30T23:33:56Z ce4d03b
  [Dependencies::Stats]
