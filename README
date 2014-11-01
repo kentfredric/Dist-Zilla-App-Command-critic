@@ -3,7 +3,7 @@ NAME
     on the built files.
 
 VERSION
-    version 0.001003
+    version 0.001004
 
 DESCRIPTION
     I have a hard time understanding the output of "[Test::Perl::Critic]",
