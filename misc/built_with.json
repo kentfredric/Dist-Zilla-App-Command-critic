@@ -4,7 +4,6 @@
       "Dist::Zilla" : "5.034",
       "Dist::Zilla::App" : "5.034",
       "Dist::Zilla::App::Command::bakeini" : "0.002000",
-      "Dist::Zilla::App::Tester" : "5.034",
       "Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes" : "0.004002",
       "Dist::Zilla::Plugin::Author::KENTNL::TravisCI" : "0.001002",
       "Dist::Zilla::Plugin::Authority" : "1.009",

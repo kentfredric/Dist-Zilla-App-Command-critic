@@ -2,8 +2,7 @@ use strict;
 use warnings;
 
 use Test::More;
-use Dist::Zilla::App::Tester;
-use Dist::Zilla::Util::Test::KENTNL 1.004002 qw( dztest ); # subtest bug
+use Dist::Zilla::Util::Test::KENTNL 1.005000 qw( dztest );    # app
 use Dist::Zilla::Plugin::GatherDir;
 use Test::DZil qw( simple_ini );
 
@@ -21,7 +20,7 @@ package Example;
 1;
 EOF
 
-my $result = test_dzil( $test->tempdir, ['critic'] );
+my $result = $test->run_command( ['critic'] );
 ok( ref $result, 'self-test executed' );
 is( $result->error,     undef, 'no errors' );
 is( $result->exit_code, 0,     'exit == 0' );
