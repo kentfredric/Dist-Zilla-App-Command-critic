@@ -1,57 +1,56 @@
-NAME
-    Dist::Zilla::App::Command::critic - build your dist and run Perl::Critic
-    on the built files.
+Dist::Zilla::App::Command::critic
 
-VERSION
-    version 0.001005
+I have a hard time understanding the output of "[Test::Perl::Critic]",
+its rather hard to read and is needlessly coated in cruft due to having
+to run through the "Test::" framework.
 
-DESCRIPTION
-    I have a hard time understanding the output of "[Test::Perl::Critic]",
-    its rather hard to read and is needlessly coated in cruft due to having
-    to run through the "Test::" framework.
+It also discards a few preferences from "perlcritic.rc" such as those
+that emit color codes.
 
-    It also discards a few preferences from "perlcritic.rc" such as those
-    that emit color codes.
+Again, conflated by the need to run through the test framework.
 
-    Again, conflated by the need to run through the test framework.
+I also don't necessarily want to make the tests pass just to release.
 
-    I also don't necessarily want to make the tests pass just to release.
+And I also don't necessarily want to run all the other tests just to
+test critic.
 
-    And I also don't necessarily want to run all the other tests just to
-    test critic.
+*TL;DR*
 
-    *TL;DR*
+  dzil critic
 
-      dzil critic
+  ~ Happyness ~
 
-      ~ Happyness ~
+The result will be similar to doing:
 
-    The result will be similar to doing:
+   dzil run --no-build perlcritic -p perlcritic.rc lib/
 
-       dzil run --no-build perlcritic -p perlcritic.rc lib/
+Except that is useless to me because it doesn't output the file names
+anywhere unless you have a verbosity level that incorporates a file name
+in *EACH* violation, which for me, is undesirable clutter when you have
+20 violations in a single file. ( And the most verbose violation levels,
+that is, all except "1,2,3,5,7" lack %f )
 
-    Except that is useless to me because it doesn't output the file names
-    anywhere unless you have a verbosity level that incorporates a file name
-    in *EACH* violation, which for me, is undesirable clutter when you have
-    20 violations in a single file. ( And the most verbose violation levels,
-    that is, all except "1,2,3,5,7" lack %f )
+INSTALLATION
 
-CONFIGURATION
-    This module has little configuration at this point.
+This is a Perl module distribution. It should be installed with whichever
+tool you use to manage your installation of Perl, e.g. any of
 
-    "perlcritic.rc" is the name of the default profile to use, and it must
-    be in your *BUILT* tree to be used.
+  cpanm .
+  cpan  .
+  cpanp -i .
 
-    Alternatively, *IF* you are using "[Test::Perl::Critic]" in your dist,
-    the path specified to "perlcritic.rc" in that module will be used.
+Consult http://www.cpan.org/modules/INSTALL.html for further instruction.
+Should you wish to install this module manually, the procedure is
 
-AUTHOR
-    Kent Fredric <kentnl@cpan.org>
+  perl Makefile.PL
+  make
+  make test
+  make install
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2014 by Kent Fredric
-    <kentfredric@gmail.com>.
 
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
+This software is copyright (c) 2015 by Kent Fredric
+<kentfredric@gmail.com>.
 
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
