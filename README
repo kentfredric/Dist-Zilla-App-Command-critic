@@ -5,7 +5,7 @@ running "Perl::Critic" on your built distribution.
 
 This competes with the likes of "[Test::Perl::Critic]" by:
 
-*   not requiring the rest of the steps in the test lifecycle to
+*   not requiring the rest of the steps in the test life-cycle to
     execute.
 
 *   not being impeded by the other tests cluttering your output.
@@ -13,7 +13,7 @@ This competes with the likes of "[Test::Perl::Critic]" by:
 *   not suffering the limitations of "Test::Perl::Critic" which discards
     profile color settings.
 
-*   carefully formatting output to give a clearer visualisation of where
+*   carefully formatting output to give a clearer visualization of where
     failures lie.
 
 *   not requiring your dist have a "Test::Perl::Critic" test pass for
@@ -22,7 +22,7 @@ This competes with the likes of "[Test::Perl::Critic]" by:
 *   not requiring your dist to have any explicit "Perl::Critic"
     consumption.
 
-Behaviourally:
+Behaviorally:
 
   dzil critic
 
@@ -30,7 +30,7 @@ Behaves very similar to:
 
    dzil run --no-build perlcritic -p perlcritic.rc lib/
 
-Except with improved verbosity of filename reporting.
+Except with improved verbosity of file name reporting.
 
 INSTALLATION
 

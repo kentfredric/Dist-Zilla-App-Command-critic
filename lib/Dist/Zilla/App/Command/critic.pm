@@ -215,13 +215,13 @@ by:
 
 =over 4
 
-=item * not requiring the rest of the steps in the test lifecycle to execute.
+=item * not requiring the rest of the steps in the test life-cycle to execute.
 
 =item * not being impeded by the other tests cluttering your output.
 
 =item * not suffering the limitations of C<Test::Perl::Critic> which discards profile color settings.
 
-=item * carefully formatting output to give a clearer visualisation of where failures lie.
+=item * carefully formatting output to give a clearer visualization of where failures lie.
 
 =item * not requiring your dist have a C<Test::Perl::Critic> test pass for release.
 
@@ -229,7 +229,7 @@ by:
 
 =back
 
-Behaviourally:
+Behaviorally:
 
   dzil critic
 
@@ -237,7 +237,7 @@ Behaves very similar to:
 
    dzil run --no-build perlcritic -p perlcritic.rc lib/
 
-Except with improved verbosity of filename reporting.
+Except with improved verbosity of file name reporting.
 
 =head1 CONFIGURATION
 
