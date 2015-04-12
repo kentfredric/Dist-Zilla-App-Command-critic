@@ -12,46 +12,6 @@ our $VERSION = '0.001005';
 
 use Dist::Zilla::App '-command';
 
-=head1 DESCRIPTION
-
-I have a hard time understanding the output of C<[Test::Perl::Critic]>, its rather hard to read and is needlessly coated in cruft
-due to having to run through the C<Test::> framework.
-
-It also discards a few preferences from C<perlcritic.rc> such as those that emit color codes.
-
-Again, conflated by the need to run through the test framework.
-
-I also don't necessarily want to make the tests pass just to release.
-
-And I also don't necessarily want to run all the other tests just to test critic.
-
-I<TL;DR>
-
-  dzil critic
-
-  ~ Happyness ~
-
-The result will be similar to doing:
-
-   dzil run --no-build perlcritic -p perlcritic.rc lib/
-
-Except that is useless to me because it doesn't output the file names anywhere unless you have a verbosity level that incorporates
-a file name in I<EACH> violation, which for me, is undesirable clutter when you have 20 violations in a single file. ( And the most
-L<< verbose violation levels|perlcritic/verbose-N-FORMAT >>, that is, all except C<1,2,3,5,7> lack C<%f> )
-
-=cut
-
-=head1 CONFIGURATION
-
-This module has little configuration at this point.
-
-C<perlcritic.rc> is the name of the default profile to use, and it must be in your I<BUILT> tree to be used.
-
-Alternatively, I<IF> you are using C<[Test::Perl::Critic]> in your dist, the path specified to C<perlcritic.rc> in that module
-will be used.
-
-=cut
-
 sub _print {
   my ( $self, @message ) = @_;
   print @message or $self->zilla->log_fatal('Cant write to STDOUT');
@@ -183,3 +143,50 @@ sub execute {
 }
 
 1;
+
+=head1 DESCRIPTION
+
+C<critic> is an C<App::Command> for L<< C<Dist::Zilla>|Dist::Zilla >> which streamlines running
+L<< C<Perl::Critic>|Perl::Critic >> on your built distribution.
+
+This competes with the likes of L<< C<[Test::Perl::Critic]>|Dist::Zilla::Plugin::Test::Perl::Critic >>
+by:
+
+=over 4
+
+=item * not requiring the rest of the steps in the test life-cycle to execute.
+
+=item * not being impeded by the other tests cluttering your output.
+
+=item * not suffering the limitations of C<Test::Perl::Critic> which discards profile color settings.
+
+=item * carefully formatting output to give a clearer visualization of where failures lie.
+
+=item * not requiring your dist have a C<Test::Perl::Critic> test pass for release.
+
+=item * not requiring your dist to have any explicit C<Perl::Critic> consumption.
+
+=back
+
+Behaviorally:
+
+  dzil critic
+
+Behaves very similar to:
+
+   dzil run --no-build perlcritic -p perlcritic.rc lib/
+
+Except with improved verbosity of file name reporting.
+
+=cut
+
+=head1 CONFIGURATION
+
+This module has little configuration at this point.
+
+C<perlcritic.rc> is the name of the default profile to use, and it must be in your I<BUILT> tree to be used.
+
+Alternatively, I<IF> you are using C<[Test::Perl::Critic]> in your dist, the path specified to C<perlcritic.rc> in that module
+will be used.
+
+=cut

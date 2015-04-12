@@ -9,6 +9,7 @@ Release history for Dist-Zilla-App-Command-critic
 
  [Minor]
  - Moving app testing to dztest.
+ - DESCRIPTION reworked.
 
 0.001004 2014-11-01T13:07:20Z 437dbe4
  [Bugfix]

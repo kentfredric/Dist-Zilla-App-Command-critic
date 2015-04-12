@@ -8,30 +8,28 @@ version 0.001005
 
 # DESCRIPTION
 
-I have a hard time understanding the output of `[Test::Perl::Critic]`, its rather hard to read and is needlessly coated in cruft
-due to having to run through the `Test::` framework.
+`critic` is an `App::Command` for [`Dist::Zilla`](https://metacpan.org/pod/Dist::Zilla) which streamlines running
+[`Perl::Critic`](https://metacpan.org/pod/Perl::Critic) on your built distribution.
 
-It also discards a few preferences from `perlcritic.rc` such as those that emit color codes.
+This competes with the likes of [`[Test::Perl::Critic]`](https://metacpan.org/pod/Dist::Zilla::Plugin::Test::Perl::Critic)
+by:
 
-Again, conflated by the need to run through the test framework.
+- not requiring the rest of the steps in the test life-cycle to execute.
+- not being impeded by the other tests cluttering your output.
+- not suffering the limitations of `Test::Perl::Critic` which discards profile color settings.
+- carefully formatting output to give a clearer visualization of where failures lie.
+- not requiring your dist have a `Test::Perl::Critic` test pass for release.
+- not requiring your dist to have any explicit `Perl::Critic` consumption.
 
-I also don't necessarily want to make the tests pass just to release.
-
-And I also don't necessarily want to run all the other tests just to test critic.
-
-_TL;DR_
+Behaviorally:
 
     dzil critic
 
-    ~ Happyness ~
-
-The result will be similar to doing:
+Behaves very similar to:
 
     dzil run --no-build perlcritic -p perlcritic.rc lib/
 
-Except that is useless to me because it doesn't output the file names anywhere unless you have a verbosity level that incorporates
-a file name in _EACH_ violation, which for me, is undesirable clutter when you have 20 violations in a single file. ( And the most
-[verbose violation levels](https://metacpan.org/pod/perlcritic#verbose-N-FORMAT), that is, all except `1,2,3,5,7` lack `%f` )
+Except with improved verbosity of file name reporting.
 
 # CONFIGURATION
 
