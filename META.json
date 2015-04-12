@@ -129,7 +129,7 @@
    "provides" : {
       "Dist::Zilla::App::Command::critic" : {
          "file" : "lib/Dist/Zilla/App/Command/critic.pm",
-         "version" : "0.001010"
+         "version" : "0.001011"
       }
    },
    "release_status" : "stable",
@@ -144,7 +144,7 @@
          "web" : "https://github.com/kentnl/Dist-Zilla-App-Command-critic"
       }
    },
-   "version" : "0.001010",
+   "version" : "0.001011",
    "x_BuiltWith" : {
       "external_file" : "misc/built_with.json"
    },
@@ -601,7 +601,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "0.001010-source",
+                  "tag" : "0.001011-source",
                   "tag_format" : "%v-source",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
@@ -672,7 +672,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : "releases",
                   "signed" : 0,
-                  "tag" : "0.001010",
+                  "tag" : "0.001011",
                   "tag_format" : "%v",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
