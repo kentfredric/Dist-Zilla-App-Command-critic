@@ -1,6 +1,6 @@
 Release history for Dist-Zilla-App-Command-critic
 
-0.001005 2015-04-12T20:09:24Z 6c26813
+0.001005 2015-04-12T20:11:29Z 663ac52
  [Dependencies::Stats]
  - Dependencies changed since 0.001004, see misc/*.deps* for details
  - develop: +3 ↑3 -1 (recommends: ↓1, suggests: ↑2)
@@ -9,6 +9,7 @@ Release history for Dist-Zilla-App-Command-critic
 
  [Minor]
  - Moving app testing to dztest.
+ - DESCRIPTION reworked.
 
 0.001004 2014-11-01T13:07:20Z 437dbe4
  [Bugfix]
