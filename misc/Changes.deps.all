@@ -24,8 +24,14 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
  [Changed / test recommends]
  - Test::More 1.001008 → 0.99
 
+ [Changed / test requires]
+ - Dist::Zilla::Util::Test::KENTNL 1.004002 → 1.005000
+
  [Removed / develop requires]
  - Dist::Zilla::Plugin::ReadmeFromPod
+
+ [Removed / test requires]
+ - Dist::Zilla::App::Tester
 
 0.001004 2014-11-01T13:07:20Z
  [Changed / develop suggests]

@@ -52,6 +52,13 @@ use Dist::Zilla::App '-command';
 
 
 
+
+
+
+
+
+
+
 sub _print {
   my ( $self, @message ) = @_;
   print @message or $self->zilla->log_fatal('Cant write to STDOUT');
@@ -200,30 +207,37 @@ version 0.001005
 
 =head1 DESCRIPTION
 
-I have a hard time understanding the output of C<[Test::Perl::Critic]>, its rather hard to read and is needlessly coated in cruft
-due to having to run through the C<Test::> framework.
+C<critic> is an C<App::Command> for L<< C<Dist::Zilla>|Dist::Zilla >> which streamlines running
+L<< C<Perl::Critic>|Perl::Critic >> on your built distribution.
 
-It also discards a few preferences from C<perlcritic.rc> such as those that emit color codes.
+This competes with the likes of L<< C<[Test::Perl::Critic]>|Dist::Zilla::Plugin::Test::Perl::Critic >>
+by:
 
-Again, conflated by the need to run through the test framework.
+=over 4
 
-I also don't necessarily want to make the tests pass just to release.
+=item * not requiring the rest of the steps in the test lifecycle to execute.
 
-And I also don't necessarily want to run all the other tests just to test critic.
+=item * not being impeded by the other tests cluttering your output.
 
-I<TL;DR>
+=item * not suffering the limitations of C<Test::Perl::Critic> which discards profile color settings.
+
+=item * carefully formatting output to give a clearer visualisation of where failures lie.
+
+=item * not requiring your dist have a C<Test::Perl::Critic> test pass for release.
+
+=item * not requiring your dist to have any explicit C<Perl::Critic> consumption.
+
+=back
+
+Behaviourally:
 
   dzil critic
 
-  ~ Happyness ~
-
-The result will be similar to doing:
+Behaves very similar to:
 
    dzil run --no-build perlcritic -p perlcritic.rc lib/
 
-Except that is useless to me because it doesn't output the file names anywhere unless you have a verbosity level that incorporates
-a file name in I<EACH> violation, which for me, is undesirable clutter when you have 20 violations in a single file. ( And the most
-L<< verbose violation levels|perlcritic/verbose-N-FORMAT >>, that is, all except C<1,2,3,5,7> lack C<%f> )
+Except with improved verbosity of filename reporting.
 
 =head1 CONFIGURATION
 
