@@ -1,5 +1,7 @@
 Release history for Dist-Zilla-App-Command-critic
 
+0.001012 2017-03-04T04:36:10Z d511b37
+
 0.001011 2017-03-04T04:13:16Z dbde69e
  [Bugfix]
  - Avoid test failures on 5.26 w/ -Ddefault_inc_excludes_dot

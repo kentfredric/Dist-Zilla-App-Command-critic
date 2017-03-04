@@ -24,7 +24,7 @@ name: Dist-Zilla-App-Command-critic
 provides:
   Dist::Zilla::App::Command::critic:
     file: lib/Dist/Zilla/App/Command/critic.pm
-    version: '0.001011'
+    version: '0.001012'
 recommends:
   Path::Tiny: '0.058'
   Term::ANSIColor: '0'
@@ -43,4 +43,4 @@ resources:
   bugtracker: https://github.com/kentnl/Dist-Zilla-App-Command-critic/issues
   homepage: https://github.com/kentnl/Dist-Zilla-App-Command-critic
   repository: https://github.com/kentnl/Dist-Zilla-App-Command-critic.git
-version: '0.001011'
+version: '0.001012'
