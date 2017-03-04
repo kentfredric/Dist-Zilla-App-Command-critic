@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::App::Command::critic;
 
-our $VERSION = '0.001010';
+our $VERSION = '0.001011';
 
 # ABSTRACT: build your dist and run Perl::Critic on the built files.
 
@@ -156,7 +156,7 @@ Dist::Zilla::App::Command::critic - build your dist and run Perl::Critic on the 
 
 =head1 VERSION
 
-version 0.001010
+version 0.001011
 
 =head1 DESCRIPTION
 
@@ -207,7 +207,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2015 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2017 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

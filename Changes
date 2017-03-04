@@ -1,5 +1,15 @@
 Release history for Dist-Zilla-App-Command-critic
 
+0.001011 2017-03-04T04:13:16Z dbde69e
+ [Bugfix]
+ - Avoid test failures on 5.26 w/ -Ddefault_inc_excludes_dot
+ - Closes https://github.com/kentnl/Dist-Zilla-App-Command-critic/issues/1
+
+ [Dependencies::Stats]
+ - Dependencies changed since 0.001010, see misc/*.deps* for details
+ - develop: +5 ↑2 -1 (suggests: ↑2)
+ - test: +2 ↓1 -1
+
 0.001010 2015-04-12T20:14:30Z 237f1a1
  [Dependencies::Stats]
  - Dependencies changed since 0.001004, see misc/*.deps* for details
@@ -61,4 +71,3 @@ Release history for Dist-Zilla-App-Command-critic
  - 5.008: 216
  - 5.010: 196
  - 5.019: 175
-

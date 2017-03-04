@@ -1,2 +1,3 @@
-.build
-Dist-Zilla-App-Command-critic-*
+/.build
+/Dist-Zilla-App-Command-critic-*
+/tmp/
