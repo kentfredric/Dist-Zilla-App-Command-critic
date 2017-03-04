@@ -4,7 +4,7 @@ Dist::Zilla::App::Command::critic - build your dist and run Perl::Critic on the 
 
 # VERSION
 
-version 0.001011
+version 0.001012
 
 # DESCRIPTION
 
