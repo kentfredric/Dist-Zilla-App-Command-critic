@@ -2,16 +2,17 @@ use strict;
 use warnings;
 
 use Test::More;
-use Dist::Zilla::Util::Test::KENTNL 1.005000 qw( dztest );    # app
+use Dist::Zilla::App::Tester;
+use Path::Tiny qw( path );
+use Test::TempDir::Tiny qw( tempdir );
 use Dist::Zilla::Plugin::GatherDir;
 use Test::DZil qw( simple_ini );
 
-my $test = dztest();
-$test->add_file( 'dist.ini' => simple_ini( ['GatherDir'] ) );
-$test->add_file( 'perlcritic.rc' => <<'EOF' );
+my $ini = simple_ini( ['GatherDir'] );
+my $critic_rc = <<'EOF';
 
 EOF
-$test->add_file( 'lib/Example.pm' => <<'EOF' );
+my $example_pm = <<'EOF';
 use strict;
 use warnings;
 
@@ -20,7 +21,14 @@ package Example;
 1;
 EOF
 
-my $result = $test->run_command( ['critic'] );
+my $wd = tempdir('Scratch');
+
+path( $wd, 'dist.ini' )->spew_raw($ini);
+path( $wd, 'perlcritic.rc' )->spew_raw($critic_rc);
+path( $wd, 'lib' )->mkpath;
+path( $wd, 'lib/Example.pm' )->spew_raw($example_pm);
+
+my $result = test_dzil( $wd, ['critic'] );
 ok( ref $result, 'self-test executed' );
 is( $result->error,     undef, 'no errors' );
 is( $result->exit_code, 0,     'exit == 0' );
