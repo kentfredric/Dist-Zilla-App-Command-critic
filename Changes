@@ -1,6 +1,8 @@
 Release history for Dist-Zilla-App-Command-critic
 
 {{$NEXT}}
+
+0.001011 2017-03-04T04:13:16Z dbde69e
  [Bugfix]
  - Avoid test failures on 5.26 w/ -Ddefault_inc_excludes_dot
  - Closes https://github.com/kentnl/Dist-Zilla-App-Command-critic/issues/1
